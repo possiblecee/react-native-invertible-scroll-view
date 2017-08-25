@@ -47,10 +47,10 @@ let InvertibleScrollView = createReactClass({
 
     if (inverted) {
       if (this.props.horizontal) {
-        props.style = [styles.horizontallyInverted, props.style];
+        props.style = [styles.horizontallyInverted, styles.container, props.style];
         props.children = this._renderInvertedChildren(props.children, styles.horizontallyInverted);
       } else {
-        props.style = [styles.verticallyInverted, props.style];
+        props.style = [styles.verticallyInverted, styles.container, props.style];
         props.children = this._renderInvertedChildren(props.children, styles.verticallyInverted);
       }
     }
@@ -68,14 +68,15 @@ let InvertibleScrollView = createReactClass({
 });
 
 let styles = StyleSheet.create({
-  verticallyInverted: {
+  container: {
     flex: 1,
+  },
+  verticallyInverted: {
     transform: [
       { scaleY: -1 },
     ],
   },
   horizontallyInverted: {
-    flex: 1,
     transform: [
       { scaleX: -1 },
     ],
